@@ -1,0 +1,84 @@
+Elixir
+
+Installing Elixier
+1_Add Repository:
+wget https://packages.erlang-solutions.com/erlang-solutions_2.0_all.deb && sudo dpkg -i erlang-solutions_2.0_all.deb
+2_Update:
+sudo apt-get update
+3_Install the Erlang/OTP platform and all of its applications: 
+sudo apt-get install esl-erlang
+4_It is highly recommended to add Elixir’s bin path to your PATH environment variable to ease development:
+
+
+export PATH="$PATH:/usr/bin/elixir"
+
+STRINGS:
+   Interpolacion:
+   handle = "taylor"
+   "My Twitter is @#{handle}"
+
+   one = 1
+   "Test: #{one}"
+
+TUPLES
+   IS A ORDERED COLECTION
+
+   book = {"Programming Elixir", "Dave Thomas", 25.00}
+
+   Retrieving data from a Tuple:
+   elem(book, 2)
+   >25.0
+
+   Adding to a Tuple:
+   put_elem(book, 2, 48.00)
+
+IN ELIXIR DATA IS INMUTABLE
+
+PATTERN MATCHING
+
+_Dos tipos de archivo ex (compilado, se carga a disco) y exs (scripts)
+
+_Ejecutar un exs:
+iex "name_of_file.exs"
+
+_Reload a file(module); This will give us a warning that we are redifining a module; inside iex type:
+>r(ModuleName)
+
+_Execute a function; Inside iex type:
+>ModuleName.function_name
+
+
+_Import a module (import itself is a function):
+import NAME_MODULE
+import IO
+
+_Best practices when importing Module is to limit the functions we are going to use:
+import MODULE_NAME, <OPTION:> [<FUNCTION_NAME>, <#>]
+import IO, only: [puts: 1] 
+
+_Kernel is imported into every module (CompileError:imported Kernel.inspect/1 conflicts with local function), we have a function with the same name that a function already imported in module Kernel
+
+_We can import a module, EXCEPT some fucntions:
+import Kernel, except: [inspect: 1]
+
+
+_IMPORT A FILE:
+>import_file("name_file.exs")
+
+_CREATE AN ALIAS FOR A MODULE:
+alias NAME.OF.THE.MODULE.NAME
+
+NAME.function_used
+_This create an alias withouth especifying a custom alias
+
+_ESPECIFYING A CUSTOM ALIAS:
+alias NAME.OF.THE.MODULE.NAME, as: MyCustomAlias
+
+_DIRECTIVE 'required': USED TO BRING A MACRO
+Example of error at compile time:
+"warning: you must require Integer before invoking the macro Integer.is_even/1"
+_SOLUTION: add the reuire directive:
+require Integer
+
+_DIRECTIVES(import, alias, require) can be Module scope or Function Scope
+ 
