@@ -38,7 +38,7 @@ PATTERN MATCHING
 
 _Dos tipos de archivo ex (compilado, se carga a disco) y exs (scripts)
 
-_Ejecutar un exs:
+_Ejecutar/Cargas un modulo en exs:
 iex "name_of_file.exs"
 
 _Reload a file(module); This will give us a warning that we are redifining a module; inside iex type:
@@ -81,4 +81,80 @@ _SOLUTION: add the reuire directive:
 require Integer
 
 _DIRECTIVES(import, alias, require) can be Module scope or Function Scope
- 
+
+
+_DEFINE A MODULE:
+defmodule Sample.Enum do
+    #Your tasks here!
+end
+
+_In functions Elixir return the last evaluated expresion:
+
+_FUNCTION ARITY: Number of parameters
+
+_Defining a function
+def first(list) do
+   hd(list)
+end
+
+_ARITY
+first/1
+{function name} / {number of parameters}
+
+_Example of pattern matching
+
+def some_func(quantity, {_, _, price}) do
+   quantity * price
+end
+
+def some_func(quantity, book) do
+   quantity * elem(book, 2)
+end
+
+_Both Functions perform the same operations, but first one is more legible.
+
+_GUARD CLAUSES
+_It's a kind of precondition validation for method invocation
+
+defmodule Sample.Calendar do
+   def is_leap_year(year) when rem(year, 400) == 0, do: true
+   def is leap_year(year) when rem(year, 100) == 0, do: true
+   def is_leap_year(year) when rem(year, 4) == 0, do:true
+   def is_leap_year(year), do: false
+
+end
+
+_ERROR:
+iex(8)> r(Sample.Calendar)     
+** (ArgumentError) could not load nor find module: Sample.Calendar
+_SOLUTION:
+_CARGAR EL ARCHIVO EN IEX:
+iex ("file_name.exs")
+
+_Errores de Sintaxys evitan que se cargue el archivo
+** (SyntaxError) calendar.exs:5: keyword argument must be followed by space after: do:
+
+
+_DEFAULT_PARAMETERS
+_We can specify default values for parameters, if user don't provide a value for that parameter, default value will be used
+
+_SYNTAX: We use '\\' near to the variable name, to define a default value
+_EXAMPLE:
+
+def add(list, val \\ 0) do
+   [val | list]
+end
+
+_Multiple clauses with deafult values should define a function head with the deafult values:
+
+def first(list, val \\ nil)  #This is the head function defining the default value for first/2 function
+
+def first([head | _], _), do: head
+def first([], val), do: val
+
+_PRIVATE_FUNCTIONS
+_SYNTAX: We use 'defp' to define a private function
+
+_FUNCTIONS AS FIRST CLASS CITIZENS
+Supports passing functions as arguments to other functions, returning them as the values froms other functions, and assigning them to variables
+
