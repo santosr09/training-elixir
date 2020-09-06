@@ -195,4 +195,91 @@ Sample.Utils.custom_func(1, fn(x) -> IO.puts(x) end)1
 =========================================================
 =========================================================
 
+_CONTROL FLOW
+
+_Branching logic
+-If
+-Cond
+-Case
+
+_Iterating Over Data
+-Elixit doesn't have Loops (for, while, etc.)
+-Elixir uses RECURSION
+
+_IF statement:
+
+Example:
+def first(list) do
+   if(length(list) == 0) do
+      nil
+   else
+      hd[list]
+   end
+end
+
+_Cond Operator:
+_Example:
+
+    def day_abrevation(day) do
+        cond do
+            day == :Monday -> "M"
+            day == :Tuesday -> "Tu"
+            day == :Wednesday -> "W"
+            day == :Thursday -> "Th"
+            day == :Friday -> "F"
+            #To avoid error: 'no cond clause evaluated to a true'
+            true -> "Invalid day"
+        end
+    end
+
+
+_Case statement:
+
+_Examples:
+    def day_abbreviation_case(day) do
+        case day do
+            :Monday -> "M"
+            :Tuesday -> "Tu"
+            :Wednesday -> "W"
+            :Thursday -> "Th"
+            :Friday -> "Fr"
+            _ -> "Invalid Day"
+        end
+    end
+
+    def describe_date(date) do
+    #case using pattern matching: 
+        case date do
+            {1, _, _} -> "Brand new month!"
+            {25, 12, _} -> "Merry Christmas"
+            {25, month, _} -> "Only #{12 - month} more"
+            {31, 10, 1517} -> "The refomration is starting"
+            {31, 10, _} -> "Happy Halloween"
+            #Using 'Guard clause' to let the last case be reached
+            {_, month, _} when month <= 12 -> "Just an average day"
+            {_, _, _} -> "Invalid month"
+        end
+    end
+
+    def send_tweet(path) do
+        case File.read(path) do
+            {:ok, data} -> Twwet.send(data)
+            {:error, error} -> IO.puts "Could not be loaded"
+        end
+    end
+
+_RECURSION
+_To understand what recursion is, you must first understand recursion.    
+
+_TAIL RECURSION:
+_Tail Recursion only happens when the last operation a function performs is recursion.
+_Tail Recursion avoid overflowing the stack
+
+_BODY RECURSION: 
+
+=========================================================
+=========================================================
+
+
+
 
