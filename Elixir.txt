@@ -156,5 +156,43 @@ _PRIVATE_FUNCTIONS
 _SYNTAX: We use 'defp' to define a private function
 
 _FUNCTIONS AS FIRST CLASS CITIZENS
-Supports passing functions as arguments to other functions, returning them as the values froms other functions, and assigning them to variables
+Supports passing functions as arguments to other functions, returning them as the values from other functions, and assigning them to variables
+
+#We pass the square function to map function
+Enum.map(list, &Sample.Utils.square/1)
+
+
+_The amperson operator '&' is the capture operator, is a reference to the function, we especify the Arity of the function, this tells Elixir wich version of the function to use.
+
+_ANONYMOUS FUNCTION
+
+_Syntax:
+#Everything between > and end is the value's function
+fn(x) -> x*x end
+
+_Example:
+Enum.map(list, fn(x) -> x*x end)
+
+#Tha anonymous function can take multiple parameters:
+fn(x, acc) -> acc + x end
+
+_Example:
+Enum.reduce(list, 0, fn(x, acc) -> acc + x end)
+
+
+_Syntax usgin the capture syntax:
+#&1 refers to first parameter
+Enum.map(list, &(&1 * &1))
+
+#&1 refers to first parameter, &2 refers to second parameter
+Enum.reduce(list, 0, &(&1 + &2))
+
+_To compile in Elixir
+c("name_of_file.exs")
+
+Sample.Utils.custom_func(1, fn(x) -> IO.puts(x) end)1
+
+=========================================================
+=========================================================
+
 
