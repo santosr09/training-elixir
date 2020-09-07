@@ -1,26 +1,28 @@
-Elixir
+= *Elixir*
 
-Installing Elixier
-1_Add Repository:
+== Installing Elixier
+.Add Repository:
 wget https://packages.erlang-solutions.com/erlang-solutions_2.0_all.deb && sudo dpkg -i erlang-solutions_2.0_all.deb
-2_Update:
+.Update:
 sudo apt-get update
-3_Install the Erlang/OTP platform and all of its applications: 
+.Install the Erlang/OTP platform and all of its applications: 
 sudo apt-get install esl-erlang
-4_It is highly recommended to add Elixir’s bin path to your PATH environment variable to ease development:
+.It is highly recommended to add Elixir’s bin path to your PATH environment variable to ease development:
 
+== Data Types
 
-export PATH="$PATH:/usr/bin/elixir"
+=== STRINGS
+Interpolacion:
+[source, elixir]
+----
+handle = "taylor"
+"My Twitter is @#{handle}"
 
-STRINGS:
-   Interpolacion:
-   handle = "taylor"
-   "My Twitter is @#{handle}"
+one = 1
+"Test: #{one}"
+----
 
-   one = 1
-   "Test: #{one}"
-
-TUPLES
+=== TUPLES
    IS A ORDERED COLECTION
 
    book = {"Programming Elixir", "Dave Thomas", 25.00}
@@ -32,14 +34,17 @@ TUPLES
    Adding to a Tuple:
    put_elem(book, 2, 48.00)
 
-IN ELIXIR DATA IS INMUTABLE
+NOTE: IN ELIXIR DATA IS INMUTABLE
 
-PATTERN MATCHING
+=== PATTERN MATCHING
 
-_Dos tipos de archivo ex (compilado, se carga a disco) y exs (scripts)
+Dos tipos de archivo: ex (compilado, se carga a disco) y exs (scripts)
 
-_Ejecutar/Cargas un modulo en exs:
+Ejecutar/Cargar un modulo en exs:
+[source, elixir]
+----
 iex "name_of_file.exs"
+----
 
 _Reload a file(module); This will give us a warning that we are redifining a module; inside iex type:
 >r(ModuleName)
@@ -280,6 +285,30 @@ _BODY RECURSION:
 =========================================================
 =========================================================
 
+_ELIXIR ECOSYSTEM
+
+_MIX
+_Build tool
+
+_HEX
+_Package manager
+
+_Mix command to see help:
+mix help
+
+_MIX CREATE AN APPLICATION
+mix new application_tweet --sup
+
+_To get dependencies
+mix deps.get
+
+PASOS PARA EJECUTAR UNA FUNCION DE LA APLICACION
+_Compila y realiza las tareas necesarias para poder ejecutar el programa
+iex -S mix
+
+cd ("lib/application_name")
 
 
+_Operador Pipe:
+El operador pipe |> pasa el resultado de una expresión como el primer parámetro de otra expresión.
 
