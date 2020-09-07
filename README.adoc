@@ -1,4 +1,5 @@
 = *Elixir*
+:toc:
 
 == Installing Elixier
 .Add Repository:
@@ -23,16 +24,16 @@ one = 1
 ----
 
 === TUPLES
-   IS A ORDERED COLECTION
+IS A ORDERED COLECTION
 
-   book = {"Programming Elixir", "Dave Thomas", 25.00}
+book = {"Programming Elixir", "Dave Thomas", 25.00}
 
-   Retrieving data from a Tuple:
-   elem(book, 2)
-   >25.0
+Retrieving data from a Tuple:
+elem(book, 2)
+>25.0
 
-   Adding to a Tuple:
-   put_elem(book, 2, 48.00)
+Adding to a Tuple:
+put_elem(book, 2, 48.00)
 
 NOTE: IN ELIXIR DATA IS INMUTABLE
 
@@ -46,56 +47,56 @@ Ejecutar/Cargar un modulo en exs:
 iex "name_of_file.exs"
 ----
 
-_Reload a file(module); This will give us a warning that we are redifining a module; inside iex type:
+Reload a file(module); This will give us a warning that we are redifining a module; inside iex type:
 >r(ModuleName)
 
-_Execute a function; Inside iex type:
+Execute a function; Inside iex type:
 >ModuleName.function_name
 
 
-_Import a module (import itself is a function):
+Import a module (import itself is a function):
 import NAME_MODULE
 import IO
 
-_Best practices when importing Module is to limit the functions we are going to use:
+Best practices when importing Module is to limit the functions we are going to use:
 import MODULE_NAME, <OPTION:> [<FUNCTION_NAME>, <#>]
 import IO, only: [puts: 1] 
 
-_Kernel is imported into every module (CompileError:imported Kernel.inspect/1 conflicts with local function), we have a function with the same name that a function already imported in module Kernel
+Kernel is imported into every module (CompileError:imported Kernel.inspect/1 conflicts with local function), we have a function with the same name that a function already imported in module Kernel
 
-_We can import a module, EXCEPT some fucntions:
+We can import a module, EXCEPT some fucntions:
 import Kernel, except: [inspect: 1]
 
 
-_IMPORT A FILE:
+IMPORT A FILE:
 >import_file("name_file.exs")
 
-_CREATE AN ALIAS FOR A MODULE:
+CREATE AN ALIAS FOR A MODULE:
 alias NAME.OF.THE.MODULE.NAME
 
 NAME.function_used
-_This create an alias withouth especifying a custom alias
+This create an alias withouth especifying a custom alias
 
-_ESPECIFYING A CUSTOM ALIAS:
+ESPECIFYING A CUSTOM ALIAS:
 alias NAME.OF.THE.MODULE.NAME, as: MyCustomAlias
 
-_DIRECTIVE 'required': USED TO BRING A MACRO
+DIRECTIVE 'required': USED TO BRING A MACRO
 Example of error at compile time:
 "warning: you must require Integer before invoking the macro Integer.is_even/1"
-_SOLUTION: add the reuire directive:
+SOLUTION: add the reuire directive:
 require Integer
 
-_DIRECTIVES(import, alias, require) can be Module scope or Function Scope
+DIRECTIVES(import, alias, require) can be Module scope or Function Scope
 
 
-_DEFINE A MODULE:
+DEFINE A MODULE:
 defmodule Sample.Enum do
     #Your tasks here!
 end
 
-_In functions Elixir return the last evaluated expresion:
+In functions Elixir return the last evaluated expresion:
 
-_FUNCTION ARITY: Number of parameters
+FUNCTION ARITY: Number of parameters
 
 _Defining a function
 def first(list) do
