@@ -1,4 +1,0 @@
-Probando Elixir
-Leyendo archivo con Elixir
-Enviando tweet con Elixir
-Fin

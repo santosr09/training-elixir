@@ -2,13 +2,22 @@
 :toc:
 
 == Installing Elixier
-.Add Repository:
+. Add Repository:
+[source, bash]
+----
 wget https://packages.erlang-solutions.com/erlang-solutions_2.0_all.deb && sudo dpkg -i erlang-solutions_2.0_all.deb
-.Update:
+----
+. Update:
+[source, bash]
+----
 sudo apt-get update
-.Install the Erlang/OTP platform and all of its applications: 
+----
+. Install the Erlang/OTP platform and all of its applications: 
+[source, bash]
+----
 sudo apt-get install esl-erlang
-.It is highly recommended to add Elixir’s bin path to your PATH environment variable to ease development:
+----
+It is highly recommended to add Elixir’s bin path to your PATH environment variable to ease development:
 
 == Data Types
 
@@ -24,13 +33,19 @@ one = 1
 ----
 
 === TUPLES
-IS A ORDERED COLECTION
+It's an ordered collection
 
+[source, elixir]
+----
 book = {"Programming Elixir", "Dave Thomas", 25.00}
+----
 
 Retrieving data from a Tuple:
+[source, elixir]
+----
 elem(book, 2)
->25.0
+25.0
+----
 
 Adding to a Tuple:
 put_elem(book, 2, 48.00)
@@ -201,18 +216,18 @@ Sample.Utils.custom_func(1, fn(x) -> IO.puts(x) end)1
 =========================================================
 =========================================================
 
-_CONTROL FLOW
+CONTROL FLOW
 
-_Branching logic
--If
--Cond
--Case
+Branching logic
+If
+Cond
+Case
 
-_Iterating Over Data
--Elixit doesn't have Loops (for, while, etc.)
--Elixir uses RECURSION
+Iterating Over Data
+Elixit doesn't have Loops (for, while, etc.)
+Elixir uses RECURSION
 
-_IF statement:
+IF statement:
 
 Example:
 def first(list) do
@@ -223,9 +238,10 @@ def first(list) do
    end
 end
 
-_Cond Operator:
-_Example:
-
+Cond Operator:
+Example:
+[source, elixir]
+----
     def day_abrevation(day) do
         cond do
             day == :Monday -> "M"
@@ -237,22 +253,27 @@ _Example:
             true -> "Invalid day"
         end
     end
+----
 
+Case statement:
 
-_Case statement:
-
-_Examples:
-    def day_abbreviation_case(day) do
-        case day do
-            :Monday -> "M"
-            :Tuesday -> "Tu"
-            :Wednesday -> "W"
-            :Thursday -> "Th"
-            :Friday -> "Fr"
-            _ -> "Invalid Day"
-        end
+Examples:
+[source, elixir]
+----
+def day_abbreviation_case(day) do
+    case day do
+        :Monday -> "M"
+        :Tuesday -> "Tu"
+        :Wednesday -> "W"
+        :Thursday -> "Th"
+        :Friday -> "Fr"
+        _ -> "Invalid Day"
     end
+end
+----
 
+[source, elixir]
+----
     def describe_date(date) do
     #case using pattern matching: 
         case date do
@@ -273,43 +294,58 @@ _Examples:
             {:error, error} -> IO.puts "Could not be loaded"
         end
     end
+----
 
-_RECURSION
-_To understand what recursion is, you must first understand recursion.    
+RECURSION
+To understand what recursion is, you must first understand recursion.    
 
-_TAIL RECURSION:
-_Tail Recursion only happens when the last operation a function performs is recursion.
-_Tail Recursion avoid overflowing the stack
+TAIL RECURSION:
+Tail Recursion only happens when the last operation a function performs is recursion.
+Tail Recursion avoid overflowing the stack
 
-_BODY RECURSION: 
+BODY RECURSION: 
 
-=========================================================
-=========================================================
 
-_ELIXIR ECOSYSTEM
+== ELIXIR ECOSYSTEM
 
-_MIX
-_Build tool
+=== MIX
+Build tool
 
-_HEX
-_Package manager
+=== HEX
+Package manager
 
-_Mix command to see help:
+Mix command to see help:
 mix help
 
-_MIX CREATE AN APPLICATION
+=== MIX CREATE AN APPLICATION
 mix new application_tweet --sup
 
-_To get dependencies
+=== To get dependencies
 mix deps.get
 
-PASOS PARA EJECUTAR UNA FUNCION DE LA APLICACION
-_Compila y realiza las tareas necesarias para poder ejecutar el programa
+==== PASOS PARA EJECUTAR UNA FUNCION DE LA APLICACION
+Compila y realiza las tareas necesarias para poder ejecutar el programa
 iex -S mix
 
 cd ("lib/application_name")
 
+Para volver a cargar un modulo:
+r(ModuleName.Name)
 
-_Operador Pipe:
+=== Operador Pipe
 El operador pipe |> pasa el resultado de una expresión como el primer parámetro de otra expresión.
+
+[source, elixir]
+----
+def get_strings_to_tweet(path) do
+    File.read!(path)
+        |> String.split("\n") #Pipe Operator |>
+        |> Enum.map(&String.trim/1)
+        |> Enum.filter(&String.length(&1) <= 140)
+        #|> Enum.filter(fn str -> String.length(str) <= 140 end)
+end
+----
+
+
+
 
